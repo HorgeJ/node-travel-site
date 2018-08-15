@@ -3,6 +3,16 @@ var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
+app.get('/', function(req, res){
+    res.type('text/plain');
+    res.send('Silver State Travel');
+});
+
+app.get('/about', function(req, res){
+    res.type('text/plain');
+    res.send('About Silver State Travel');
+});
+
 // 404 Page
 app.use(function(req, res){
     res.type('text/plain');
