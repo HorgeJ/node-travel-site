@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var quote = require('./lib/quotes.js');
 
 var handlebars = require('express-handlebars')
 	.create({ defaultLayout:'main' });
@@ -11,11 +12,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 
 //Travel quotes array
-var quotes = [
-    "What makes the desert beautiful is that somewhere it hides a well.",
-    "A desert is a place without expectation.",
-    "Night comes to the desert all at once, as if someone turned off all the light."
-];
+
 
 // HOME route
 
@@ -25,8 +22,7 @@ app.get('/', function(req, res) {
 
 // About route
 app.get('/about', function(req, res){
-    var randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    res.render('about', {quotes: randomQuote});
+    res.render('about', {quotes: quote.getQuote()});
 });
 
 // 404 catch-all handler (middleware)
