@@ -11,8 +11,15 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/public'));
 
-//Travel quotes array
+// TEST ROUTE
 
+app.use(function(req, res, next){
+    res.locals.showTests = app.get('env') !== 'production' &&
+        req.query.test === '1';
+    next();
+});
+
+// Routes go here...
 
 // HOME route
 
