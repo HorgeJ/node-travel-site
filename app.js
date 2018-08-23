@@ -29,7 +29,9 @@ app.get('/', function(req, res) {
 
 // About route
 app.get('/about', function(req, res){
-    res.render('about', {quotes: quote.getQuote()});
+    res.render('about', {quotes: quote.getQuote(),
+    pageTestScript: '/qa/tests-about.js'
+    });
 });
 
 // 404 catch-all handler (middleware)
